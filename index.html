@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body onload="initGame()">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body onload="initGame()">
+  <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
     <h1>Mine Sweeper</h1>
-    <div class="smiley" onclick="initGame()"></div>
-    <div id="4" class="level beginner" onclick="setLevel(this)">Beginner</div>
-    <div id="8" class="level medium" onclick="setLevel(this)">Medium</div>
-    <div id="12" class="level expert" onclick="setLevel(this)">Expert</div>
-    <table>
-      <tbody></tbody>
-    </table>
+      <div class="levels">
+        <div id="4" class="level beginner" onclick="setLevel(null, this)">Beginner</div>
+        <div id="8" class="level medium" onclick="setLevel(null, this)">Medium</div>
+        <div id="12" class="level expert" onclick="setLevel(null, this)">Expert</div>
+      </div>
+      <div class="times">
+        <div class="clock stopwatch"></div>
+        <div class="smiley" onclick="initGame()"></div>
+        <div class=" clock record"></div>
+      </div>
+      <div>
+        <div class="lives"></div>
+        <button class="safe-click" onclick="handleSafeClick()">Safe Click</button>
+        <button onclick="positionMinesManually()">Position Mines</button>
+      </div>
+      <div class="hints"></div>
+      <div class="game-wrapper">
+        <div class="manually-modal"></div>
+        <table>
+          <tbody></tbody>
+        </table>
+      </div>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
-  </body>
+</body>
+
 </html>

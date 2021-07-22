@@ -16,7 +16,6 @@ function getEmptyCells(board) {
             gEmptyCells.push({ i, j });
         }
     }
-    // return gEmptyCells;
 }
 
 function preventContextMenu() {
@@ -24,45 +23,40 @@ function preventContextMenu() {
     elBody.addEventListener('contextmenu', e => { e.preventDefault() });
 }
 
+var interval;
+function startInterval() {
+    interval = setInterval(getTimer, 10);
+}
 
-// STOPWATCH
-// var time1;
-// var myTime;
-// function startTimer() {
-//     time1 = Date.now();
-//     myTime = setInterval(timeCycle, 1);
-// }
-// function timeCycle() {
-//     var time2 = Date.now();
-//     var msTimeDiff = time2 - time1;
-//     var timeDiffStr = new Date(msTimeDiff).toISOString().slice(17, -1);
-//     document.querySelector('.stopwatch').innerHTML = timeDiffStr;
-// }
+function stopInterval() {
+    clearInterval(interval);
+}
 
-// function stopTimer() {
-//     clearInterval(myTime);
-//     var finishTime = document.querySelector('.stopwatch').innerHTML;
-//     alert('Done at: ' + finishTime);
-// }
+// To get the total game time in ms.
+function totalGameTime() {
+    const currentTime = new Date();
+    return currentTime.getTime() - startingTime.getTime();
+}
 
+// Receives total game time from totalGameTime(), formats it using formatTime() and displays result.
+function getTimer() {
+    let gameTimeMs = totalGameTime();
+    const formattingString = formatTime(gameTimeMs);
+    document.querySelector('.stopwatch').innerText = formattingString;
+}
 
+// To proparly format minutes, seconds and milliseconds. Returns (mins):(secs):(ms).
+function formatTime(totalMS) {
+    let gameTimeSec = totalMS / 1000;
+    let gameTimeSecNew = Math.floor(gameTimeSec);
+    let gameTimeMin = gameTimeSec / 60;
 
+    gameTimeMin = Math.floor(gameTimeMin);
+    gameTimeSec = Math.floor(gameTimeSec - (gameTimeMin * 60));
+    totalMS = totalMS - (gameTimeSecNew * 1000);
 
-
-// ANOTHER STOPWATCH
-// function updateTimer() {
-//     var timeDiff = Date.now() - gStartTime;
-//     var seconds = parseInt(timeDiff / 1000);
-//     var timeDiffStr = timeDiff.toString();
-//     var ms = timeDiffStr.substring(timeDiffStr.length - 3);
-//     if (ms.length < 2) {
-//         ms = `00${ms}`;
-//     } else if (ms.length < 3) {
-//         ms = `0${ms}`;
-//     }
-//     if (seconds < 10) seconds = `0${seconds}`;
-//     document.querySelector('.time .value').innerText = `${seconds}.${ms}`
-// }
-
-// gStartTime = Date.now();
-// gGameIntervalId = setInterval(updateTimer, 16);
+    let gameTimeMinFinal = gameTimeMin < 10 ? ('0' + gameTimeMin) : gameTimeMin;
+    let gameTimeSecFinal = gameTimeSec < 10 ? ('0' + gameTimeSec) : gameTimeSec;
+    let gameTimeMsFinal = (String(totalMS).slice(0, 2)) < 10 ? ('0' + (String(totalMS).slice(0, 2))) : (String(totalMS).slice(0, 2));
+    return `${gameTimeMinFinal}:${gameTimeSecFinal}:${gameTimeMsFinal}`;
+}

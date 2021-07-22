@@ -2,13 +2,183 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: black;
+    position: relative;
+    text-align: center;
+    padding-bottom: 40px;
+    font-family: 'Maven Pro', sans-serif;
+    letter-spacing: 2px;
+}
+
+button {
+    cursor: pointer;
+    margin: 20px 40px 30px;
+    letter-spacing: 2px;
+    font-size: 17px;
+    width: 200px;
+    background-color: unset;
+    color: white;
+    border: 1px solid #0fa;
+    padding: 10px 25px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    animation: button-hover 0.11s ease-in-out infinite alternate;
+}
+
+button:hover {
+    width: 240px;
+    background-color: #0fa;
+    color: black;
+}
+
+@keyframes button-hover {
+    0% {
+        box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #0fa, 0 0 0.8rem #0fa, 0 0 2.8rem #0fa, inset 0 0 1.3rem #0fa;
+    }
+    100% {
+        box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #0fa, 0 0 0.8rem #0fa, 0 0 2.8rem #0fa, inset 0 0 1.3rem #0fa;
+    }
+}
+
+h1, div {
+    color: white;
+}
+
+h1 {
+    font-size: 50px;
+    animation: pulsate 0.11s ease-in-out infinite alternate;
+    color: #fff;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 15px #fff, 0 0 35px #f09, 0 0 75px #f09, 0 0 90px #f09, 0 0 100px #f09, 0 0 150px #f09;
+    }
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #f09, 0 0 73px #f09, 0 0 80px #f09, 0 0 94px #f09, 0 0 140px #f09;
+    }
+}
+
 table {
     border-collapse: collapse;
     text-align: center;
+    color: white;
+    margin: 10px auto;
 }
 
 td {
-    border: 1px solid black;
+    border: 1px solid white;
     height: 50px;
     width: 50px;
+}
+
+.active-cell {
+    box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 0rem #bc13fe, 0 0 0.8rem #bc13fe, 0 0 0.1rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+}
+
+.empty-cell {
+    background-color: #bb13fea6;
+}
+
+.blink {
+    animation: blink 2s;
+}
+
+@keyframes blink {
+    0% {
+        background-color: unset;
+    }
+    25% {
+        background-color: #f09;
+    }
+    50% {
+        background-color: unset;
+    }
+    75% {
+        background-color: #f09;
+    }
+    100% {
+        background-color: unset;
+    }
+}
+
+.levels {
+    width: 500px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.times {
+    width: 350px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.level {
+    cursor: pointer;
+}
+
+.level:hover {
+    background-color: #bc13fe;
+    border: 1px solid #fff;
+}
+
+.level:active {
+    border: none;
+}
+
+.clock {
+     width: 130px;
+}
+
+.level, .clock {
+    border: 2px solid #fff;
+    border-radius: 0.5rem;
+    padding: 15px;
+    box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #bc13fe, 0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+}
+
+.smiley {
+    font-size: 30px;
+}
+
+.lives {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.hints {
+    font-size: 40px;
+}
+
+.manually-modal {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    color: black;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: -140px;
+    top: 50%;
+    visibility: hidden;
+    display: flex;
+    font-size: 20px;
+    border-radius: 24px;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ccff00, 0 0 0.8rem #ccff00, 0 0 2.8rem #ccff00, inset 0 0 1.3rem #ccff00;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+td[id^="cell-"] {
+    cursor: pointer;
 }
