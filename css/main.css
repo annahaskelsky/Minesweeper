@@ -6,7 +6,6 @@ body {
     background-color: black;
     position: relative;
     text-align: center;
-    padding-bottom: 40px;
     font-family: 'Maven Pro', sans-serif;
     letter-spacing: 2px;
 }
@@ -64,13 +63,21 @@ table {
     border-collapse: collapse;
     text-align: center;
     color: white;
-    margin: 10px auto;
+    padding-bottom: 40px;
 }
 
 td {
     border: 1px solid white;
     height: 50px;
     width: 50px;
+}
+
+.footer {
+    width: 100%;
+    color: white;
+    bottom: 0;
+    font-size: 18px;
+    margin: 50px 0;
 }
 
 .active-cell {
@@ -131,7 +138,7 @@ td {
 }
 
 .clock {
-     width: 130px;
+    width: 130px;
 }
 
 .level, .clock {
@@ -177,7 +184,6 @@ td {
     width: fit-content;
     margin: 0 auto;
 }
-
 
 td[id^="cell-"] {
     cursor: pointer;
