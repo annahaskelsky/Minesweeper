@@ -52,11 +52,16 @@ td div {
     margin-bottom: 2px;
     font-size: 14px;
     font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.239);
 }
 
 td div:active:not(.active-cell) {
-    box-shadow: 0 2px #666;
+    box-shadow: 0 2px rgb(200, 200, 200);
     transform: translateY(4px);
+}
+
+td div:hover {
+    background-color: rgba(245, 245, 245, 0.493);
 }
 
 .levels {
@@ -149,7 +154,7 @@ width: 25px;
 }
 
 .empty-cell {
-    background-color: black;
+    background-color: rgb(83, 83, 83);
 }
 
 .blink {
