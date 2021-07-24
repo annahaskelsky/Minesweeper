@@ -5,7 +5,6 @@ function getRandomNum(min, max) {
 
 // Get Rangom Empty Cell
 function getEmptyCell() {
-
     var randIdx = getRandomNum(0, gEmptyCells.length - 1);
     return gEmptyCells.splice(randIdx, 1)[0];
 }
@@ -36,6 +35,12 @@ function stopInterval() {
 function totalGameTime() {
     const currentTime = new Date();
     return currentTime.getTime() - startingTime.getTime();
+}
+
+function totalGameTimeAfterLose() {
+    const currentTime = new Date();
+    const gameTime = gLoseTime.getTime() - startingTime.getTime();
+    return currentTime.getTime() - gameTime;
 }
 
 // Receives total game time from totalGameTime(), formats it using formatTime() and displays result.

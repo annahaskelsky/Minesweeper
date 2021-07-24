@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Mine Sweeper</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/background.css">
   <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -27,14 +27,17 @@
       <div class="times">
         <div class="clock stopwatch"></div>
         <div class="smiley" onclick="initGame()"></div>
-        <div class=" clock record"></div>
+        <div class="clock record"></div>
       </div>
       <div>
         <div class="lives"></div>
-        <button class="safe-click" onclick="handleSafeClick()">Safe Click</button>
-        <button onclick="positionMinesManually()">Position Mines</button>
+        <button class="position-manually" onclick="positionMinesManually(this)">Position Mines</button>
+        <button class="undo" onclick="handleUndo()">Undo</button>
       </div>
+      <div class="help-container">
       <div class="hints"></div>
+      <div class="locks"></div>
+    </div>
       <div class="game-wrapper">
         <div class="manually-modal"></div>
         <table>
@@ -45,7 +48,9 @@
       <p>Anna Haskelsky</p>
     </div>
     <script src="js/utils.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/setup.js"></script>
+    <script src="js/special.js"></script>
+    <script src="js/game.js"></script>
 </body>
 
 </html>
